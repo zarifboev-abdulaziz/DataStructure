@@ -1,5 +1,9 @@
 package myDataStructure;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class MyBinarySearchTree {
     private Node parent;
 //    private int size;
@@ -65,16 +69,59 @@ public class MyBinarySearchTree {
 
 
 
-    public void stringRepresentation(){
-        show(parent);
+    public void breadthFirst(){
+        Node current = parent;
+
+        List<Node> nodeList = new ArrayList<>();
+        nodeList.add(current);
+
+        while (!nodeList.isEmpty()){
+            LinkedList<Node> nodes = new LinkedList<>();
+            for (Node node : nodeList) {
+                System.out.println(node.value);
+                if (node.left != null) nodes.addLast(node.left);
+                if (node.right != null) nodes.addLast(node.right);
+            }
+
+            nodeList = nodes;
+        }
     }
 
-    public void show(Node node){
+
+    public void preOrder(){
+        preOrderRecursion(parent);
+    }
+
+    private void preOrderRecursion(Node node){
         if (node == null) return;
 
         System.out.println(node.value);
-        show(node.left);
-        show(node.right);
+        preOrderRecursion(node.left);
+        preOrderRecursion(node.right);
+    }
+
+    public void inOrder(){
+        inOrderRecursion(parent);
+    }
+
+    private void inOrderRecursion(Node node){
+        if (node == null) return;
+
+        inOrderRecursion(node.left);
+        System.out.println(node.value);
+        inOrderRecursion(node.right);
+    }
+
+    public void postOrder(){
+        postOrderRecursion(parent);
+    }
+
+    private void postOrderRecursion(Node node){
+        if (node == null) return;
+
+        postOrderRecursion(node.left);
+        postOrderRecursion(node.right);
+        System.out.println(node.value);
     }
 
 }

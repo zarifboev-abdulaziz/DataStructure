@@ -6,14 +6,15 @@ import myDataStructure.MyLinkedList;
 public class Main {
     public static void main(String[] args) {
 
+//        int[] nums = {20, 10, 30, 6, 14, 24, 3, 8, 26};
+        int[] nums = {7, 4, 9, 1, 6, 8, 10};
         MyBinarySearchTree tree = new MyBinarySearchTree();
-        tree.insert(4);
-        tree.insert(3);
-        tree.insert(5);
-        tree.insert(2);
-        tree.insert(7);
-        System.out.println(tree.search(7));
 
+        for (int i = 0; i < nums.length; i++) {
+            tree.insert(nums[i]);
+        }
+
+        tree.postOrder();
 
     }
 
